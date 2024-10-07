@@ -34,6 +34,7 @@ class RiskGAN:
             keras.layers.Dense(128, activation='relu'),
             keras.layers.Dense(1, activation='sigmoid')
         ])
+        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
         return model
 
     def build_gan(self):
@@ -42,6 +43,7 @@ class RiskGAN:
             self.generator,
             self.discriminator
         ])
+        model.compile(optimizer='adam', loss='binary_crossentropy')
         return model
 
     def train(self, data, epochs=1000, batch_size=32):
